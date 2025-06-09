@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汽車美容行銷問卷調查</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 自定義字體為 Inter */
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f0f4f8; /* 淺灰色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 讓內容靠上對齊 */
+            min-height: 100vh; /* 確保內容區塊至少為視窗高度 */
+            padding: 2rem 1rem; /* 增加整體內邊距 */
+        }
+        .container {
+            max-width: 900px; /* 增加最大寬度 */
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 1.5rem; /* 更大的圓角 */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1); /* 更明顯的陰影 */
+            padding: 2.5rem; /* 增加內邊距 */
+        }
+        input[type="text"], textarea, select {
+            border: 1px solid #d1d5db; /* 淺邊框 */
+            border-radius: 0.75rem; /* 圓角 */
+            padding: 0.75rem 1rem; /* 內邊距 */
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.2s ease-in-out; /* 過渡效果 */
+        }
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3b82f6; /* 藍色焦點邊框 */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2); /* 藍色焦點陰影 */
+        }
+        button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        button.primary {
+            background-color: #2563eb; /* 深藍色 */
+            color: #ffffff;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+        button.primary:hover:not(:disabled) {
+            background-color: #1d4ed8; /* 較深的藍色 */
+            transform: translateY(-2px); /* 輕微上移效果 */
+        }
+        button.secondary {
+            background-color: #e2e8f0; /* 淺灰色 */
+            color: #334155; /* 深文字色 */
+        }
+        button.secondary:hover:not(:disabled) {
+            background-color: #cbd5e1; /* 較深的灰色 */
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .message-box {
+            background-color: #e0f2fe; /* 淺藍色背景 */
+            border: 1px solid #93c5fd; /* 藍色邊框 */
+            color: #1e40af; /* 深藍色文字 */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            word-break: break-all; /* 防止長單詞溢出 */
+            text-align: center;
+        }
+        .message-box.success {
+            background-color: #d1fae5; /* 淺綠色 */
+            border-color: #6ee7b7; /* 綠色邊框 */
+            color: #065f46; /* 深綠色文字 */
+        }
+        .message-box.error {
+            background-color: #fee2e2; /* 淺紅色 */
+            border-color: #fca5a5; /* 紅色邊框 */
+            color: #991b1b; /* 深紅色文字 */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-extrabold text-gray-900 mb-6 text-center">汽車美容行銷策略問卷</h1>
+        <p class="text-gray-600 mb-8 text-center">請回答以下問題，幫助我們了解您目前在客戶獲取方面的策略與挑戰。</p>
+
+        <form id="marketingSurveyForm" class="space-y-6">
+            <div>
+                <label for="currentChannels" class="block text-gray-700 text-lg font-semibold mb-2">
+                    1. 目前您主要透過哪些管道獲取客戶？ (可多選)
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="社交媒體" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">社交媒體 (Facebook, Instagram等)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="搜索引擎優化" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">搜索引擎優化 (SEO)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="實體廣告" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">實體廣告 (傳單、看板等)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="口碑推薦" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">口碑推薦</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="合作夥伴" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">與其他商家合作夥伴</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="付費廣告" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">付費廣告 (Google Ads, FB Ads等)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="currentChannels" value="其他" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">其他 (請在下方說明)</span>
+                    </label>
+                </div>
+                <textarea id="otherChannels" rows="2" placeholder="如果您選擇了「其他」，請在此處說明..." class="mt-3"></textarea>
+            </div>
+
+            <div>
+                <label for="targetAudience" class="block text-gray-700 text-lg font-semibold mb-2">
+                    2. 您的目標客戶是誰？ (例如：高階車主、日常通勤族、家庭用車等)
+                </label>
+                <input type="text" id="targetAudience" placeholder="請輸入您的目標客戶描述" class="w-full">
+            </div>
+
+            <div>
+                <label for="marketingChallenges" class="block text-gray-700 text-lg font-semibold mb-2">
+                    3. 您在行銷上遇到的最大挑戰是什麼？
+                </label>
+                <textarea id="marketingChallenges" rows="4" placeholder="例如：預算不足、不知道如何定位、缺乏專業知識等" class="w-full"></textarea>
+            </div>
+
+            <div>
+                <label for="interestedStrategies" class="block text-gray-700 text-lg font-semibold mb-2">
+                    4. 您對哪種新的行銷策略最感興趣？ (可多選)
+                </label>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="interestedStrategies" value="內容行銷" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">內容行銷 (部落格文章、影片等)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="interestedStrategies" value="影響者行銷" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">影響者行銷 (KOL/網紅合作)</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="interestedStrategies" value="電子郵件行銷" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">電子郵件行銷</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="interestedStrategies" value="聯盟行銷" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">聯盟行銷/異業結盟</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="interestedStrategies" value="社群團購" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">社群團購/限時優惠</span>
+                    </label>
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="interestedStrategies" value="在地行銷" class="form-checkbox text-blue-600 rounded-md">
+                        <span class="ml-2 text-gray-800">在地行銷 (Google我的商家優化等)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div>
+                <label for="monthlyBudget" class="block text-gray-700 text-lg font-semibold mb-2">
+                    5. 您目前每月在行銷上的預算大約是多少？
+                </label>
+                <select id="monthlyBudget" class="w-full">
+                    <option value="">請選擇</option>
+                    <option value="$0-$500">$0 - $500 新台幣</option>
+                    <option value="$501-$1000">$501 - $1000 新台幣</option>
+                    <option value="$1001-$5000">$1001 - $5000 新台幣</option>
+                    <option value="$5001-$10000">$5001 - $10000 新台幣</option>
+                    <option value="$10000+">$10000+ 新台幣</option>
+                </select>
+            </div>
+
+            <div class="flex justify-center gap-4 pt-4">
+                <button type="submit" class="primary" id="submitButton">提交問卷</button>
+                <button type="reset" class="secondary">重置</button>
+            </div>
+        </form>
+
+        <div id="statusMessage" class="hidden message-box"></div>
+    </div>
+
+    <script>
+        // *** 請將此處的 YOUR_APPS_SCRIPT_WEB_APP_URL 替換為您部署的 Google Apps Script 網址！ ***
+        const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwDivus5hFafFTb8CfhT0tZPQPbZPSfsPIWDfeB-bb09ce7qf-tRfHoZ7PB4r3g4aUr/exec';
+
+        document.getElementById('marketingSurveyForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // 防止表單預設提交行為
+
+            const submitButton = document.getElementById('submitButton');
+            const statusMessageDiv = document.getElementById('statusMessage');
+
+            // 禁用按鈕並顯示載入中訊息
+            submitButton.disabled = true;
+            statusMessageDiv.classList.remove('hidden', 'success', 'error');
+            statusMessageDiv.classList.add('message-box');
+            statusMessageDiv.textContent = '提交中，請稍候...';
+
+            const form = event.target;
+            const formData = {};
+
+            // 收集多選框數據
+            const currentChannels = Array.from(form.querySelectorAll('input[name="currentChannels"]:checked'))
+                                       .map(checkbox => checkbox.value);
+            formData['目前獲客管道'] = currentChannels.length > 0 ? currentChannels.join(', ') : '未選擇';
+            formData['其他獲客管道說明'] = form.elements['otherChannels'].value.trim() || '無';
+
+            const interestedStrategies = Array.from(form.querySelectorAll('input[name="interestedStrategies"]:checked'))
+                                            .map(checkbox => checkbox.value);
+            formData['感興趣的新行銷策略'] = interestedStrategies.length > 0 ? interestedStrategies.join(', ') : '未選擇';
+
+            // 收集單行文本和多行文本數據
+            formData['目標客戶'] = form.elements['targetAudience'].value.trim() || '未填寫';
+            formData['行銷最大挑戰'] = form.elements['marketingChallenges'].value.trim() || '未填寫';
+            formData['每月行銷預算'] = form.elements['monthlyBudget'].value || '未選擇';
+            formData['提交時間'] = new Date().toLocaleString('zh-TW'); // 添加提交時間戳
+
+            try {
+                const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'cors', // 啟用 CORS
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    statusMessageDiv.textContent = '問卷提交成功！感謝您的填寫。';
+                    statusMessageDiv.classList.add('success');
+                    form.reset(); // 清空表單
+                } else {
+                    statusMessageDiv.textContent = `提交失敗：${result.message || '未知錯誤'}`;
+                    statusMessageDiv.classList.add('error');
+                }
+            } catch (error) {
+                console.error('提交問卷時發生錯誤:', error);
+                statusMessageDiv.textContent = '提交問卷時發生網路錯誤，請稍後再試。';
+                statusMessageDiv.classList.add('error');
+            } finally {
+                submitButton.disabled = false; // 啟用按鈕
+                statusMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // 訊息顯示一段時間後自動隱藏
+                setTimeout(() => {
+                    statusMessageDiv.classList.add('hidden');
+                }, 5000);
+            }
+        });
+
+        // 重置表單時隱藏狀態訊息
+        document.getElementById('marketingSurveyForm').addEventListener('reset', function() {
+            const statusMessageDiv = document.getElementById('statusMessage');
+            statusMessageDiv.classList.add('hidden');
+            statusMessageDiv.textContent = '';
+            statusMessageDiv.classList.remove('success', 'error');
+        });
+    </script>
+</body>
+</html>
